@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA7A10312706DF8900FC52F7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A10302706DF8900FC52F7 /* main.swift */; };
+		BA7A10382706ED5A00FC52F7 /* gameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A10372706ED5A00FC52F7 /* gameMaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		BA7A102D2706DF8900FC52F7 /* blackJack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = blackJack; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7A10302706DF8900FC52F7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		BA7A10372706ED5A00FC52F7 /* gameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameMaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				BA7A10302706DF8900FC52F7 /* main.swift */,
+				BA7A10372706ED5A00FC52F7 /* gameMaker.swift */,
 			);
 			path = blackJack;
 			sourceTree = "<group>";
@@ -120,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7A10382706ED5A00FC52F7 /* gameMaker.swift in Sources */,
 				BA7A10312706DF8900FC52F7 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
