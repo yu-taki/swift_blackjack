@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		BA7A10312706DF8900FC52F7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A10302706DF8900FC52F7 /* main.swift */; };
 		BA7A10382706ED5A00FC52F7 /* gameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A10372706ED5A00FC52F7 /* gameMaker.swift */; };
+		BA7A103A270ABB0400FC52F7 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1039270ABB0400FC52F7 /* card.swift */; };
+		BA7A103C270ABB2B00FC52F7 /* rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A103B270ABB2B00FC52F7 /* rules.swift */; };
+		BA7A103E270ABB4F00FC52F7 /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A103D270ABB4F00FC52F7 /* player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +30,9 @@
 		BA7A102D2706DF8900FC52F7 /* blackJack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = blackJack; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7A10302706DF8900FC52F7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		BA7A10372706ED5A00FC52F7 /* gameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameMaker.swift; sourceTree = "<group>"; };
+		BA7A1039270ABB0400FC52F7 /* card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
+		BA7A103B270ABB2B00FC52F7 /* rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rules.swift; sourceTree = "<group>"; };
+		BA7A103D270ABB4F00FC52F7 /* player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 			children = (
 				BA7A10302706DF8900FC52F7 /* main.swift */,
 				BA7A10372706ED5A00FC52F7 /* gameMaker.swift */,
+				BA7A103B270ABB2B00FC52F7 /* rules.swift */,
+				BA7A1039270ABB0400FC52F7 /* card.swift */,
+				BA7A103D270ABB4F00FC52F7 /* player.swift */,
 			);
 			path = blackJack;
 			sourceTree = "<group>";
@@ -123,7 +132,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7A103A270ABB0400FC52F7 /* card.swift in Sources */,
+				BA7A103C270ABB2B00FC52F7 /* rules.swift in Sources */,
 				BA7A10382706ED5A00FC52F7 /* gameMaker.swift in Sources */,
+				BA7A103E270ABB4F00FC52F7 /* player.swift in Sources */,
 				BA7A10312706DF8900FC52F7 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
