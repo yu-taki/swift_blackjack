@@ -24,7 +24,7 @@ struct gameMaker {
         self.cards = blackJack.cardPile(numberOfDeck: numberOfDeck)
         self.player = blackJack.player(action: blackJack.childAction(rules: ruleSet))
     }
-    mutating func startGame() {
+    private mutating func gameProcess() -> Void {
         // トランプ山の確認
         if(ruleSet.isNecessaryCardsShuffle(pile: self.cards)) { cards.shuffleCards() }
         // カード配る(胴元へ)
@@ -35,20 +35,61 @@ struct gameMaker {
         while(!self.dealer.action.canStopHit()){
             self.dealer.action.receiveCard(receive: cards.drawCards())
         }
+        
+        dealer.action.printHands()
+
+        // playerActionでメソッド化をしたい
+        // 戻り値の想定は enumで{勝負へ行く,負ける}の二択で良さそう
         // 各打ち手の操作(stand,hit,fold)
+        repeat {
+            player.action.printHands()
+            if(player.action.rules.isBurst(hands: player.action.hands)){
+                print("bustしました")
+                dealer.action.numberOfWin += 1
+                return
+            }
+            print("現在の値" + String(ruleSet.countHands(hands: player.action.hands) ?? 0))
+            print("1:hit(カードを引く)");
+            print("2:stand(勝負へ進む)");
+            print("3:fold(ゲームから降りる)");
+            
+            let input = readLine() ?? ""
+            if(input == "1"){
+                player.action.receiveCard(receive: cards.drawCards())
+            }else if(input == "2"){break;}
+             else if(input == "3"){
+                print("ゲームから降りました")
+                dealer.action.numberOfWin += 1
+                return
+            }
+        }while(true)
+    
         // 勝負(メソッドにするべき)
         if(self.ruleSet.isBurst(hands: self.player.action.hands)){
-            self.player.action.numberOfWin = self.player.action.numberOfWin + 1
+            self.player.action.numberOfWin += 1
         }else if (self.ruleSet.isBurst(hands: self.dealer.action.hands)){
-            self.dealer.action.numberOfWin = self.dealer.action.numberOfWin + 1
+            self.dealer.action.numberOfWin +=  1
         }else {
             if(self.ruleSet.isWin(targetHands: self.player.action.hands,
                                   dealerHands: self.dealer.action.hands)){
-                self.player.action.numberOfWin = self.player.action.numberOfWin + 1
+                self.player.action.numberOfWin += 1
             }else{
-                self.dealer.action.numberOfWin = self.dealer.action.numberOfWin + 1
+                self.dealer.action.numberOfWin += 1
             }
         }
-        // 再戦するか？
+    }
+
+    public mutating func startGame() {
+        var keyInput:String = ""
+        repeat {
+            print("ゲームを始めますか？")
+            print("1:始める,0:終わる")
+            keyInput = readLine() ?? ""
+            if(keyInput == "1"){
+                gameProcess()
+            }else if (keyInput == "0"){
+                break;
+            }
+        } while(true)
     }
 }

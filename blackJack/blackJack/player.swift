@@ -7,7 +7,7 @@
 
 import Foundation
 
-// TODO Action：への型制約
+// TODO Actionへの型制約 playerActionを実装している型を許容したい
 struct player<Action>{
     var action:Action
     init(action:Action){
@@ -39,7 +39,7 @@ protocol dealerAction:playerAction {
     func canStopHit() -> Bool
 }
 // 胴元の取れる行動
-struct parentAction:dealerAction,playerAction{
+struct parentAction:dealerAction{
     var rules: rules
     var hands: [cards] = []
     var numberOfWin: Int = 0
@@ -76,6 +76,4 @@ struct childAction:playerAction {
         print("hand:" + self.hands.compactMap({item in item.getDisplayChar()})
                                  .joined(separator: ","))
     }
-    // func stand() -> Void // 不要では？
-    // func foldGame() -> Void //　不要では？
 }
