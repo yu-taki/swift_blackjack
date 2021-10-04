@@ -25,6 +25,9 @@ struct gameMaker {
         self.player = blackJack.player(action: blackJack.childAction(rules: ruleSet))
     }
     private mutating func gameProcess() -> Void {
+        // 手札の破棄
+        dealer.action.hands.removeAll()
+        player.action.hands.removeAll()
         // トランプ山の確認
         if(ruleSet.isNecessaryCardsShuffle(pile: self.cards)) { cards.shuffleCards() }
         // カード配る(胴元へ)
@@ -36,24 +39,25 @@ struct gameMaker {
             self.dealer.action.receiveCard(receive: cards.drawCards())
         }
         
-        dealer.action.printHands()
+        dealer.action.printOtherCard()
 
         // playerActionでメソッド化をしたい
         // 戻り値の想定は enumで{勝負へ行く,負ける}の二択で良さそう
         // 各打ち手の操作(stand,hit,fold)
         repeat {
             player.action.printHands()
-            if(player.action.rules.isBurst(hands: player.action.hands)){
+            if(player.action.rules.isBust(hands: player.action.hands)){
                 print("bustしました")
                 dealer.action.numberOfWin += 1
                 return
             }
-            print("現在の値" + String(ruleSet.countHands(hands: player.action.hands) ?? 0))
+            print("あなたの現在の値" + String(ruleSet.countHands(hands: player.action.hands) ?? 0))
             print("1:hit(カードを引く)");
             print("2:stand(勝負へ進む)");
             print("3:fold(ゲームから降りる)");
             
             let input = readLine() ?? ""
+            print("\n");
             if(input == "1"){
                 player.action.receiveCard(receive: cards.drawCards())
             }else if(input == "2"){break;}
@@ -65,15 +69,24 @@ struct gameMaker {
         }while(true)
     
         // 勝負(メソッドにするべき)
-        if(self.ruleSet.isBurst(hands: self.player.action.hands)){
+        dealer.action.printHands()
+        print("ディーラーの現在の値" + String(ruleSet.countHands(hands: dealer.action.hands) ?? 0))
+        player.action.printHands()
+        print("あなたの現在の値" + String(ruleSet.countHands(hands: player.action.hands) ?? 0))
+
+        if(self.ruleSet.isBust(hands: self.player.action.hands)){
+            print("bustしています")
+            self.dealer.action.numberOfWin += 1
+        }else if (self.ruleSet.isBust(hands: self.dealer.action.hands)){
+            print("ディーラーがbustしています")
             self.player.action.numberOfWin += 1
-        }else if (self.ruleSet.isBurst(hands: self.dealer.action.hands)){
-            self.dealer.action.numberOfWin +=  1
         }else {
             if(self.ruleSet.isWin(targetHands: self.player.action.hands,
                                   dealerHands: self.dealer.action.hands)){
+                print("あなたの勝ち\n")
                 self.player.action.numberOfWin += 1
             }else{
+                print("あなたの負け\n")
                 self.dealer.action.numberOfWin += 1
             }
         }
@@ -85,11 +98,16 @@ struct gameMaker {
             print("ゲームを始めますか？")
             print("1:始める,0:終わる")
             keyInput = readLine() ?? ""
+            print("\n");
             if(keyInput == "1"){
                 gameProcess()
             }else if (keyInput == "0"){
                 break;
             }
+            print("あなたの勝利数")
+            player.action.printNumberOfWin()
+            print("ディーラーの勝利数")
+            dealer.action.printNumberOfWin()
         } while(true)
     }
 }

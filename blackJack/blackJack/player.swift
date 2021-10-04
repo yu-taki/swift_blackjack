@@ -37,6 +37,7 @@ extension playerAction {
 }
 protocol dealerAction:playerAction {
     func canStopHit() -> Bool
+    func printOtherCard() -> Void
 }
 // 胴元の取れる行動
 struct parentAction:dealerAction{
@@ -48,18 +49,20 @@ struct parentAction:dealerAction{
     init(rules:rules){
         self.rules = rules
     }
-    func printHands() {
+    func printOtherCard() {
         // 親は最初のカードを見せない
-        print("hand:X," + self.hands.dropFirst()
+        print("ディーラー:X," + self.hands.dropFirst()
                                  .compactMap({item in item.getDisplayChar()})
+                                 .joined(separator: ","))
+    }
+    func printHands() {
+        print("ディーラー:" + self.hands.compactMap({item in item.getDisplayChar()})
                                  .joined(separator: ","))
     }
     // func dealCards(pileCard:[cards],players:[player]) -> [cards]
     func canStopHit() -> Bool {
-        !self.rules.isBurst(hands: self.hands)
-        && self.rules.countHands(hands: self.hands) != nil
-        // 直前で判定しているためnilを排除
-        && self.rules.countHands(hands: self.hands)! < numberOfMinimunDealer
+        self.rules.isBust(hands: self.hands)
+        || (self.rules.countHands(hands: self.hands) ?? 0) > numberOfMinimunDealer
     }
 }
 
@@ -73,7 +76,7 @@ struct childAction:playerAction {
         self.rules = rules
     }
     func printHands() {
-        print("hand:" + self.hands.compactMap({item in item.getDisplayChar()})
+        print("あなた:" + self.hands.compactMap({item in item.getDisplayChar()})
                                  .joined(separator: ","))
     }
 }
