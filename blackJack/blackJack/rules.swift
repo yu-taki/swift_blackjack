@@ -14,7 +14,7 @@ protocol rules {
     func isNecessaryCardsShuffle(pile:cardPile) -> Bool
 }
 
-class baseRules:rules {
+struct baseRules:rules {
     private let NumberOfBlackJack = 21
     private let NumbersOfLeastCard = 12 // ゲーム開始に最低限必要な枚数
     

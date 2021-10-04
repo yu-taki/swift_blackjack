@@ -8,7 +8,7 @@
 import Foundation
 
 // スート未実装
-class cards {
+struct cards {
     private static let cardDictionary = ["A":[1,11],"2":[2],"3":[3],"4":[4],"5":[5],
                                   "6":[6],"7":[7],"8":[8],"9":[9],"10":[10],
                                   "J":[10],"Q":[10],"K":[10]]
@@ -34,7 +34,7 @@ class cards {
     }
 }
 
-class cardPile {
+struct cardPile {
     private var remainCard:[cards]
     private var usedCards:[cards]
     init (numberOfDeck:Int) {
@@ -58,7 +58,7 @@ class cardPile {
         return remainCard.count
     }
     
-    public func drawCards(NumberOfDraw:Int = 1) -> [cards]{
+    public mutating func drawCards(NumberOfDraw:Int = 1) -> [cards]{
         if (NumberOfDraw <= remainCard.count){
             let dealCards = (1...NumberOfDraw).compactMap({ret in remainCard.popLast()})
             usedCards = usedCards + dealCards;
@@ -71,5 +71,9 @@ class cardPile {
             usedCards = dealCards
             return dealCards
         }
+    }
+    public mutating func shuffleCards(){
+        remainCard = (remainCard + usedCards).shuffled()
+        usedCards = []
     }
 }

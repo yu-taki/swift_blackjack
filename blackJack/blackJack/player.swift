@@ -7,10 +7,18 @@
 
 import Foundation
 
+// TODO Action：への型制約
+struct player<Action>{
+    var action:Action
+    init(action:Action){
+        self.action = action
+    }
+}
+
 protocol playerAction {
-    var hands:[cards] {get set} // この記法だと private set できない？
+    var hands:[cards] {get set}
     var numberOfWin:Int {get set}
-    var rules:rules { get };
+    var rules:rules {get};
 
     mutating func receiveCard(receive:[cards]) -> Void
     mutating func clearHand() -> Void
@@ -27,9 +35,11 @@ extension playerAction {
         print("Win:" + String(self.numberOfWin))
     }
 }
-
+protocol dealerAction:playerAction {
+    func canStopHit() -> Bool
+}
 // 胴元の取れる行動
-struct parentAction:playerAction {
+struct parentAction:dealerAction,playerAction{
     var rules: rules
     var hands: [cards] = []
     var numberOfWin: Int = 0
@@ -45,7 +55,7 @@ struct parentAction:playerAction {
                                  .joined(separator: ","))
     }
     // func dealCards(pileCard:[cards],players:[player]) -> [cards]
-    func canStopHit(hands:[cards]) -> Bool {
+    func canStopHit() -> Bool {
         !self.rules.isBurst(hands: self.hands)
         && self.rules.countHands(hands: self.hands) != nil
         // 直前で判定しているためnilを排除
