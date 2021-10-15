@@ -17,6 +17,9 @@ jobs:
     - name: pwd
       run: pwd
       working-directory: ./blackJack
+    - name: shell
+      run: UnitTest.sh
+      working-directory: ./trcomMobile2
     # - name: test
     #   run: UnitTest.sh
     #   working-directory: ./trcomMobile2
