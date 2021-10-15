@@ -14,11 +14,11 @@ jobs:
     - uses: actions/checkout@v2
     - name: pwd
       run: pwd
-      working-directory: ./trcomMobile2
+      working-directory: ./blackJack
     # - name: test
     #   run: UnitTest.sh
     #   working-directory: ./trcomMobile2
     - name: isXcodebuildExist
       run: xcodebuild -list
-      working-directory: ./trcomMobile2
+      working-directory: ./blackJack
 
