@@ -1,0 +1,24 @@
+name: Swift
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: #pull requestがマージ時にのみ動かしたい
+      - closed
+  workflow_dispatch: #テスト用手動実行イベント
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: pwd
+      run: pwd
+      working-directory: ./trcomMobile2
+    # - name: test
+    #   run: UnitTest.sh
+    #   working-directory: ./trcomMobile2
+    - name: isXcodebuildExist
+      run: xcodebuild -list
+      working-directory: ./trcomMobile2
+
