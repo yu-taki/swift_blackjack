@@ -18,7 +18,7 @@ jobs:
       run: pwd
       working-directory: ./blackJack
     - name: shell
-      run: UnitTest.sh
+      run: sh ./UnitTest.sh
       working-directory: ./blackJack
     # - name: test
     #   run: UnitTest.sh
