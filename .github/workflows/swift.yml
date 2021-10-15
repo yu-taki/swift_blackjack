@@ -12,6 +12,8 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+    - name: ls
+      run: ls -l
     - name: pwd
       run: pwd
       working-directory: ./blackJack
