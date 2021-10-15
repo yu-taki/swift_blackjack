@@ -19,7 +19,7 @@ jobs:
       working-directory: ./blackJack
     - name: shell
       run: UnitTest.sh
-      working-directory: ./trcomMobile2
+      working-directory: ./blackJack
     # - name: test
     #   run: UnitTest.sh
     #   working-directory: ./trcomMobile2
