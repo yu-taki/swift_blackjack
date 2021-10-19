@@ -11,15 +11,13 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: ls
-      run: ls -l
+    # - uses: actions/checkout@v2
     - name: testSecrests 
       env:  
-        BUILD_CERTIFICATE_BASE64: ${{ secrets.test.BUILD_CERTIFICATE_BASE64 }}
-        P12_PASSWORD: ${{ secrets.test.P12_PASSWORD }}
-        BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.test.BUILD_PROVISION_PROFILE_BASE64 }}
-        KEYCHAIN_PASSWORD: ${{ secrets.test.KEYCHAIN_PASSWORD }}
+        BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+        P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+        BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
       run: |
         echo "$BUILD_CERTIFICATE_BASE64"
         echo "$P12_PASSWORD"
