@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0AC7A7271EEFE5003C8F52 /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = BA0AC7A6271EEFE5003C8F52 /* Crypto */; };
 		BA7A10312706DF8900FC52F7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A10302706DF8900FC52F7 /* main.swift */; };
 		BA7A10382706ED5A00FC52F7 /* gameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A10372706ED5A00FC52F7 /* gameMaker.swift */; };
 		BA7A103A270ABB0400FC52F7 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7A1039270ABB0400FC52F7 /* card.swift */; };
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA0AC7A7271EEFE5003C8F52 /* Crypto in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +123,9 @@
 			dependencies = (
 			);
 			name = blackJack;
+			packageProductDependencies = (
+				BA0AC7A6271EEFE5003C8F52 /* Crypto */,
+			);
 			productName = blackJack;
 			productReference = BA7A102D2706DF8900FC52F7 /* black */;
 			productType = "com.apple.product-type.tool";
@@ -170,6 +175,9 @@
 				Base,
 			);
 			mainGroup = BA7A10242706DF8900FC52F7;
+			packageReferences = (
+				BA0AC7A5271EEFE5003C8F52 /* XCRemoteSwiftPackageReference "swift-crypto" */,
+			);
 			productRefGroup = BA7A102E2706DF8900FC52F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -466,6 +474,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA0AC7A5271EEFE5003C8F52 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA0AC7A6271EEFE5003C8F52 /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA0AC7A5271EEFE5003C8F52 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BA7A10252706DF8900FC52F7 /* Project object */;
 }
