@@ -14,7 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Cache SwiftPM
-      uses: actions/cache@2
+      uses: actions/cache@v2
+      
       with: 
         path: |
           ./.SPM
