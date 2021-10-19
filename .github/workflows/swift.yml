@@ -18,7 +18,7 @@ jobs:
       
       with: 
         path: |
-          ./.SPM
+          ./blackJack/.SPM
         key: ${{ hashFiles('**/Package.resolved') }}
     - name: Install the Apple certificate and provisioning profile
       env:
