@@ -13,6 +13,12 @@ jobs:
     environment: test
     steps:
     - uses: actions/checkout@v2
+    - name: Cache SwiftPM
+      uses: actions/cache@2
+      with: 
+        path: |
+          ./.SPM
+        key: ${{ hashFiles('**/Package.resolved') }}
     - name: Install the Apple certificate and provisioning profile
       env:
         BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
