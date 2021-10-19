@@ -9,5 +9,5 @@ import Foundation
 
 print("Hello, World!")
 
-var game = blackJack.gameMaker()
+var game = black.gameMaker()
 game.startGame()
