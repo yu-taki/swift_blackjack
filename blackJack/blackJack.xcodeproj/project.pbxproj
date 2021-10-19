@@ -351,9 +351,9 @@
 		BA7A10352706DF8900FC52F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 89944GJ9HX;
+				DEVELOPMENT_TEAM = 2AFZ9G8WJX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				MODULE_NAME = black;
@@ -366,7 +366,7 @@
 		BA7A10362706DF8900FC52F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89944GJ9HX;
 				ENABLE_HARDENED_RUNTIME = YES;
