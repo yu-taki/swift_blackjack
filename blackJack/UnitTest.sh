@@ -8,9 +8,9 @@ failedSchemaList=()
 succeededSchemaList=()
 
 # build
-xcodebuild  -scheme blackJack  -target blackJack  
+xcodebuild  -scheme blackJack  -target blackJack -clonedSourcePackagesDirPath ".SPM"
 # test
-xcodebuild  -scheme test -target blackJack  test
+xcodebuild  -scheme test -target blackJack  test -clonedSourcePackagesDirPath ".SPM"
 
 end_time=`date +%s`
 
