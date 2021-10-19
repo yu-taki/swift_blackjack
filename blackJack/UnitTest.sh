@@ -6,21 +6,11 @@ start_time=`date +%s`
 schemaList=(`xcodebuild -list | sed -n '/Scheme/,$p' | tail -n +2`)
 failedSchemaList=()
 succeededSchemaList=()
-for scheme in "${schemaList[@]}" ;do
-    echo "TestStart ${scheme}"
-    xcodebuild  -scheme $scheme -target $target  build
-    if [ $? -ne 0 ]; then
-      failedSchemaList+="$scheme\n"
-    else
-      succeededSchemaList+="$scheme\n"
-    fi
-done
 
-echo "テストが失敗したPackage"
-echo $failedSchemaList
-
-echo "テストが成功したPackage"
-echo $succeededSchemaList
+# build
+xcodebuild  -scheme blackJack  -target blackJack  
+# test
+xcodebuild  -scheme test -target blackJack  test
 
 end_time=`date +%s`
 
