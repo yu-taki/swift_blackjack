@@ -94,3 +94,7 @@ iOSInjectionProject/
 .idea/
 
 .SPM/
+.bundle/
+fastlane-buildlog/
+test_output/
+report.xml
