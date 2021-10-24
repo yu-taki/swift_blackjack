@@ -30,7 +30,7 @@ jobs:
       run: |
         pwd
         ls -al
-        Localizer
+        exec Localizer
       working-directory: ./blackJack/blackJack/sample
 
     - name: check xcodeList
