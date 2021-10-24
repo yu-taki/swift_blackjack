@@ -6,6 +6,9 @@ on:
     types: #pull requestがマージ時にのみ動かしたい
       - closed
   workflow_dispatch: #テスト用手動実行イベント
+  push:
+      branches:
+        - master
 
 jobs:
   build:
@@ -24,7 +27,7 @@ jobs:
       run: git log master --oneline | wc -l
 
     - name: test exe
-      run: git log master --oneline | wc -l
+      run: Localizer
       working-directory: ./blackJack/blackJack/sample
 
     - name: check xcodeList
