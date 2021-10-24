@@ -1,0 +1,11 @@
+{
+"version": 1,
+"dictionary": [
+{ "key": "test"         , "en": "TEST"              , "ja": "テスト"  },
+{ "key": "login"        , "en": "Login"             , "ja": "ログイン" },
+{ "key": "userName"     , "en": "User Name"         , "ja": "ユーザ名" },
+{ "key": "language"     , "en": "Language Setting"  , "ja": "言語設定" },
+{ "key": "japanese"     , "en": "Japanese"          , "ja": "日本語" },
+{ "key": "english"      , "en": "English"           , "ja": "英語" }
+]
+}

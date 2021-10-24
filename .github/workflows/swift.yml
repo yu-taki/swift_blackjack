@@ -23,6 +23,10 @@ jobs:
     - name: test git branchName
       run: git log master --oneline | wc -l
 
+    - name: test exe
+      run: git log master --oneline | wc -l
+      working-directory: ./blackJack/blackJack/sample
+
     - name: check xcodeList
       run: ls -n /Applications/ | grep Xcode*
       
