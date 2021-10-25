@@ -1,14 +1,7 @@
 name: donwloadArtifacts
 
 on:
-  pull_request:
-    branches: [ main ]
-    types: #pull requestがマージ時にのみ動かしたい
-      - closed
   workflow_dispatch: #テスト用手動実行イベント
-  push:
-      branches:
-        - master
 
 jobs:
   build:

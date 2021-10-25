@@ -1,17 +1,29 @@
 name: uploadArtifacts
 
 on:
-  pull_request:
-    branches: [ main ]
-    types: #pull requestがマージ時にのみ動かしたい
-      - closed
   workflow_dispatch: #テスト用手動実行イベント
   push:
       branches:
         - master
 
 jobs:
-  build:
+  confirm:
+    name: confirmContext
+    runs-on: macos-latest
+    steps:
+      - env:
+        event: ${{ github.event }}
+        event_name: ${{ github.event_name }}
+        event_path: ${{ github.event_path }}
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+      - run: |
+        echo event:${event}
+        echo event_name:${event_name}
+        echo event_path:${event_path}
+
+    
+  upload:
+    if: github.event.pullmerged == true
     name: Add 3 and 7
     runs-on: macos-latest
     environment: test
@@ -24,3 +36,18 @@ jobs:
         with:
           name: homework
           path: math-homework.txt
+
+  download:
+    if: github.event_name == true
+    runs-on: macos-latest
+    environment: test
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v2
+        with:
+          name: homework
+      - shell: bash
+        run: |
+          value=`cat math-homework.txt`
+
+          echo $value
