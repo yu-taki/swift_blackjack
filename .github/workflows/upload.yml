@@ -19,8 +19,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: dump git
         run: |
-          git rev-list --count master
-          git log --oneline
+          git rev-list 922aa95..HEAD --count
+          git branch -a
     
   upload:
     if: github.event_name == 'push'
