@@ -16,6 +16,7 @@ jobs:
   dumpGit:
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v2
       - name: dump git
         run: |
           git rev-list --count master
