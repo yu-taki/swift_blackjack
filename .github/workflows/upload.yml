@@ -18,8 +18,8 @@ jobs:
     steps:
       - name: dump git
         run: |
-        git rev-list --count master
-        git log --oneline
+          git rev-list --count master
+          git log --oneline
     
   upload:
     if: github.event_name == 'push'
