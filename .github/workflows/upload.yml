@@ -1,0 +1,26 @@
+name: uploadArtifacts
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: #pull requestがマージ時にのみ動かしたい
+      - closed
+  workflow_dispatch: #テスト用手動実行イベント
+  push:
+      branches:
+        - master
+
+jobs:
+  build:
+    name: Add 3 and 7
+    runs-on: macos-latest
+    environment: test
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > math-homework.txt
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: homework
+          path: math-homework.txt

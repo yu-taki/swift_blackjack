@@ -1,0 +1,26 @@
+name: donwloadArtifacts
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: #pull requestがマージ時にのみ動かしたい
+      - closed
+  workflow_dispatch: #テスト用手動実行イベント
+  push:
+      branches:
+        - master
+
+jobs:
+  build:
+    runs-on: macos-latest
+    environment: test
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v2
+        with:
+          name: homework
+      - shell: bash
+        run: |
+          value=`cat math-homework.txt`
+
+          echo $value
