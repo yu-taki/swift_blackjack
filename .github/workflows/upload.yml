@@ -12,14 +12,14 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: tryRun
-        env:
-          event: ${{ github.event }}
-          event_name: ${{ github.event_name }}
-          event_path: ${{ github.event_path }}
-        run: |
-          echo event:${event}
-          echo event_name:${event_name}
-          echo event_path:${event_path}
+      env:
+        event: ${{ github.event }}
+        event_name: ${{ github.event_name }}
+        event_path: ${{ github.event_path }}
+      run: |
+        echo event:${event}
+        echo event_name:${event_name}
+        echo event_path:${event_path}
 
     
   upload:
