@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: dump git
         run: |
-          git log --all --oneline
+          git log remotes/origin/master --oneline
           git branch -a
     
   upload:
