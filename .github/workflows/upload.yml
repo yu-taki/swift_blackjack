@@ -15,7 +15,7 @@ jobs:
 
     
   upload:
-    if: github.event.event_name == 'push'
+    if: github.event_name == 'push'
     name: Add 3 and 7
     runs-on: macos-latest
     environment: test
