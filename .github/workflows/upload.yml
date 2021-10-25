@@ -11,15 +11,15 @@ jobs:
     name: confirmContext
     runs-on: macos-latest
     steps:
-      - env:
-        event: ${{ github.event }}
-        event_name: ${{ github.event_name }}
-        event_path: ${{ github.event_path }}
-        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-      - run: |
-        echo event:${event}
-        echo event_name:${event_name}
-        echo event_path:${event_path}
+    - name: tryRun
+        env:
+          event: ${{ github.event }}
+          event_name: ${{ github.event_name }}
+          event_path: ${{ github.event_path }}
+        run: |
+          echo event:${event}
+          echo event_name:${event_name}
+          echo event_path:${event_path}
 
     
   upload:
