@@ -15,7 +15,7 @@ jobs:
 
     
   upload:
-    if: github.event.pullmerged == true
+    if: github.event.event_name == push
     name: Add 3 and 7
     runs-on: macos-latest
     environment: test
@@ -30,7 +30,7 @@ jobs:
           path: math-homework.txt
 
   download:
-    if: github.event_name == true
+    if: github.event_name == workflow_dispatch
     runs-on: macos-latest
     environment: test
     steps:
