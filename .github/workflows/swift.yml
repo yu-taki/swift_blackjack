@@ -2,7 +2,8 @@ name: Swift
 
 on:
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
       types: 
       - review_requested
   workflow_dispatch: #テスト用手動実行イベント
