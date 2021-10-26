@@ -25,6 +25,5 @@ platform :ios do
       derived_data_path: "~/Library/Developer/Xcode/DerivedData",
       destination: "platform=macOS,id=00008103-0016583114F1001E"
     )
-    add actions here: https://docs.fastlane.tools/actions
   end
 end
