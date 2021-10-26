@@ -15,9 +15,9 @@
 
 default_platform(:ios)
 
-platform :ios do |options|
+platform :ios do 
   desc "Description of what the lane does"
-  lane :tests do
+  lane :tests do |options|
     puts "url:" + options[:prUrl]
     # run_tests(
     #   scheme: "test",
