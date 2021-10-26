@@ -3,8 +3,8 @@ name: Swift
 on:
   pull_request:
     branches: [ main ]
-    types: #pull requestがマージ時にのみ動かしたい
-      - closed
+      types: 
+      - review_requested
   workflow_dispatch: #テスト用手動実行イベント
 
 jobs:
@@ -41,7 +41,9 @@ jobs:
         KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
       run: ./.github/workflows/submitCredential.sh
     - name: fastlane
-      run: fastlane tests
+      env:
+        PULL_REQUEST_URL: ${{ pull_request.url }}
+      run: fastlane tests prUrl:${PULL_REQUEST_URL}
       working-directory: ./blackJack
     - name: shell
       run: sh ./UnitTest.sh

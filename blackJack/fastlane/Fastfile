@@ -15,15 +15,16 @@
 
 default_platform(:ios)
 
-platform :ios do
+platform :ios do |options|
   desc "Description of what the lane does"
   lane :tests do
-    run_tests(
-      scheme: "test",
-      buildlog_path: "./fastlane/fastlane-buildlog",
-      derived_data_path: "~/Library/Developer/Xcode/DerivedData",
-      destination: "platform=macOS,id=00008103-0016583114F1001E"
-    )
+    puts "url:" + options[:prUrl]
+    # run_tests(
+    #   scheme: "test",
+    #   buildlog_path: "./fastlane/fastlane-buildlog",
+    #   derived_data_path: "~/Library/Developer/Xcode/DerivedData",
+    #   destination: "platform=macOS,id=00008103-0016583114F1001E"
+    # )
     # add actions here: https://docs.fastlane.tools/actions
   end
 end
