@@ -41,7 +41,7 @@ jobs:
       run: ./.github/workflows/submitCredential.sh
     - name: fastlane
       env:
-        PULL_REQUEST_URL: ${{  github.event.pull_request.url }}
+        PULL_REQUEST_URL: ${{  github.event.pull_request.html_url }}
       run: fastlane tests prUrl:${PULL_REQUEST_URL}
       working-directory: ./blackJack
     - name: shell
