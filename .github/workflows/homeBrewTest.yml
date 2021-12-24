@@ -1,0 +1,25 @@
+name: homeBrewTest
+
+on:
+  workflow_dispatch: #テスト用手動実行イベント
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Get brew cache directory
+      id: brew-cache
+      run: echo "::set-output name=dir::$(brew --cache)/downloads"
+    - name: Brew cache
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.brew-cache.outputs.dir }}
+        key: ${{ runner.os }}-${{ hashFiles('Brewfile') }}
+    - name: Brew install test
+      run: brew install mono0926/license-plist/license-plist
+    - name: Cleanup some brew downloads
+      run: cd ${{ steps.brew-cache.outputs.dir }} && ls -lsS | head -n 10 | awk '{ print $10 }' | xargs rm -rf
+    - name: update plist/license
+      run:  license-plist --output-path ./trcomMobile2/Settings.bundle

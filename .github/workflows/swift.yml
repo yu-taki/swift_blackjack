@@ -2,9 +2,8 @@ name: Swift
 
 on:
   pull_request:
-    branches: [ main ]
-    types: #pull requestがマージ時にのみ動かしたい
-      - closed
+    branches:
+      - master
   workflow_dispatch: #テスト用手動実行イベント
 
 jobs:
@@ -15,14 +14,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Cache SwiftPM
       uses: actions/cache@v2
-      
       with: 
         path: |
           ./blackJack/.SPM
         key: ${{ hashFiles('**/Package.resolved') }}
-    - name: test git branchName
-      run: git log master --oneline | wc -l
-
     - name: test exe
       run: |
         pwd
@@ -41,14 +36,23 @@ jobs:
         KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
       run: ./.github/workflows/submitCredential.sh
     - name: fastlane
-      run: fastlane tests
+      env:
+        PULL_REQUEST_URL: ${{  github.event.pull_request.html_url }}
+      run: fastlane tests prUrl:${PULL_REQUEST_URL}
       working-directory: ./blackJack
-    - name: shell
-      run: sh ./UnitTest.sh
-      working-directory: ./blackJack
+    - name: UploadFailureReport
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: report.html
+        path: ./blackjack/fastlane/test_output/report.html
+        retention-days: 7
+    # - name: shell
+    #   run: sh ./UnitTest.sh
+    #   working-directory: ./blackJack
     # - name: test
     #   run: UnitTest.sh
     #   working-directory: ./trcomMobile2
-    - name: isXcodebuildExist
-      run: xcodebuild -list
-      working-directory: ./blackJack
+    # - name: isXcodebuildExist
+    #   run: xcodebuild -list
+    #   working-directory: ./blackJack
