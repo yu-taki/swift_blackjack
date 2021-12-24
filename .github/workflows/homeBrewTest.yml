@@ -1,4 +1,4 @@
-name: donwloadArtifacts
+name: homeBrewTest
 
 on:
   workflow_dispatch: #テスト用手動実行イベント
@@ -22,4 +22,4 @@ jobs:
     - name: Cleanup some brew downloads
       run: cd ${{ steps.brew-cache.outputs.dir }} && ls -lsS | head -n 10 | awk '{ print $10 }' | xargs rm -rf
     - name: update plist/license
-      run: license-plist
+      run:  license-plist --output-path ./trcomMobile2/Settings.bundle
